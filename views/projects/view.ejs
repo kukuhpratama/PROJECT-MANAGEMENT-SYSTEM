@@ -1,0 +1,153 @@
+<% include ../partial/header%>
+<% include ../partial/navbar%>
+
+<div class="container-fluid">
+    <div>
+        <h1>Projects</h1>
+    </div>
+    <hr>
+    <div>
+        <h2>Filters</h2>
+    </div>
+    <div class="container">
+        <form action="" method="GET">
+            <input type="hidden" name="page" value="1">
+            <div class="form-row">
+                <div class="form-group col-md-2 form-inline ">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="ckid" <%= query.ckid ? ' checked ': '' %>>
+                        <label class="form-check-label" for="id">
+                            ID
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group col-md-10">
+                    <input type="text" class="form-control" placeholder="ID" id="id" name="id" value="<%= query.id%>" />
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-2 form-inline ">
+                    <div class="form-check">
+                        <input class="form-check-input " type="checkbox" name="ckname"
+                            <%= query.ckname ? ' checked ': '' %>>
+                        <label class="form-check-label" for="name">
+                            Project Name
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group col-md-10">
+                    <input type="text" class="form-control" id="name" placeholder="Project Name" name="name"
+                        value="<%= query.name %>" />
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-2 form-inline ">
+                    <div class="form-check">
+                        <input class="form-check-input " type="checkbox" name="ckmember"
+                            <%= query.ckmember ? ' checked': '' %>>
+                        <label class="form-check-label">
+                            Member
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group col-md-10">
+                    <select class="form-control" name="member">
+                        <option value="">Choose the member..</option>
+                        <%for (let i =0; i < users.length; i++) { %>
+                        <option value="<%=users[i].userid %> "><%= users[i].firstname%> <%= users[i].lastname%></option>
+                        <% };%>
+                    </select>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Search</button>
+            <a href="/projects" class="btn btn-warning">Reset</a>
+        </form>
+    </div>
+    <br>
+    <div>
+        <h2>Options</h2>
+    </div>
+    <form action="/projects/update" method="POST">
+        <div class="form-group row">
+            <div class="col-sm-2">Checkbox</div>
+            <div class="col-sm-10">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" name="projectid" value="true"
+                        <%= option.projectid ? 'checked': ''%>>
+                    <label class="form-check-label">
+                        ID
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" name="projectname" value="true"
+                        <%= option.projectname ? 'checked' : '' %>>
+                    <label class="form-check-label">
+                        Project Name
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" name="members" value="true"
+                        <%= option.members ? ' checked': ''%>>
+                    <label class="form-check-label">
+                        Members
+                    </label>
+                </div>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary"><i class="fas fa-check-circle"></i> Apply</button>
+    </form>
+
+
+    <br>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <%- option.projectid ? `<th>ID</th>` : `` %>
+                <%- option.projectname ? `<th>Project Name</th>` : `` %>
+                <%- option.members ? `<th>Members</th>` : `` %>
+                <th scope="">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            <% for(const item of data)  { %>
+            <tr>
+                <%- option.projectid ? `<td><a href="/projects/overview/${item.projectid}" class="btn btn-outline-dark">${item.projectid}</a></td>` : `` %>
+                <%- option.projectname ? `<td>${item.name}</td>` : `` %>
+                <%- option.members ? `<td>${item.members}</td>` : `` %>
+
+                <td>
+                    <a class="btn btn-success edit" href="/projects/edit/<%=item.projectid%>"">Edit</a>                       
+                     <a class=" btn btn-danger delete"
+                        onclick="return confirm('Are you sure you want to delete this item?');"
+                        href="/projects/delete/<%= item.projectid %>">Delete</a>
+                </td>
+
+
+            </tr>
+            <% } %>
+
+        </tbody>
+    </table>
+
+    <!--PAGINATION-->
+    <br />
+    <nav aria-label="Page navigation example" style="margin-top:1%">
+        <ul class="pagination" class="pagination justify-content-center">
+            <li class="page-item <%= page == 1 ? 'disabled' : ''%>"><a class="page-link"
+                    href="/projects<%= url.replace(`page=${parseInt(page)}`, `page=${parseInt(page) - 1}`) %>">Previous</a>
+            </li>
+            <% for(let i = 1; i <= pages; i++){ %>
+            <li class="page-item <%= page == i ? 'active' : '' %>"><a class="page-link"
+                    href="/projects<%= url.replace(`page=${page}`, `page=${i}`) %>"><%= i %></a></li>
+            <% } %>
+            <li class="page-item <%= page == pages ? 'disabled' : ''%>"><a class="page-link"
+                    href="/projects<%= url.replace(`page=${parseInt(page)}`, `page=${parseInt(page) + 1}`) %>">Next</a>
+            </li>
+        </ul>
+    </nav>
+
+    <a href="/projects/add" class="btn btn-primary">Add</a>
+</div>
+
+<% include ../partial/footer%>

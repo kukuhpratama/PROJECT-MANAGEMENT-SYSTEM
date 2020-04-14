@@ -1,0 +1,229 @@
+<% include ../partial/header%>
+<% include ../partial/navbar%>
+<div class="container-fluid">
+    <div>
+        <h1>User</h1>
+    </div>
+    <hr>
+    <div>
+        <h2>Filters</h2>
+    </div>
+
+    <div class="container">
+        <form action="" method="GET">
+            <div class="form-row">
+                <div class="form-group col-md-2 form-inline ">
+                    <div class="form-check">
+                        <input class="form-check-input " type="checkbox" name="checkid"
+                            <%= query.checkid ? ' checked': '' %>>
+                        <label class="form-check-label" for="gridCheck">
+                            ID
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group col-md-10">
+                    <input type="text" class="form-control" id="id" placeholder="ID" name="id" value="<%=query.id%>">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-2 form-inline ">
+                    <div class="form-check">
+                        <input class="form-check-input " type="checkbox" name="checkfirstname"
+                            <%= query.checkfirstname ? ' checked': '' %>>
+                        <label class="form-check-label" for="gridCheck">
+                            First Name
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group col-md-10">
+                    <input type="text" class="form-control" id="firstname" placeholder="First Name" name="firstname"
+                        value="<%=query.name%>">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-2 form-inline ">
+                    <div class="form-check">
+                        <input class="form-check-input " type="checkbox" name="checklastname"
+                            <%= query.checkname ? ' checked': '' %>>
+                        <label class="form-check-label" for="gridCheck">
+                            Last Name
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group col-md-10">
+                    <input type="text" class="form-control" id="lastname" placeholder="Last Name" name="lastname"
+                        value="<%=query.name%>">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-2 form-inline ">
+                    <div class="form-check">
+                        <input class="form-check-input " type="checkbox" name="checkemail"
+                            <%= query.checkname ? ' checked': '' %>>
+                        <label class="form-check-label" for="gridCheck">
+                            email
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group col-md-10">
+                    <input type="text" class="form-control" id="email" placeholder="Email" name="email"
+                        value="<%=query.email%>">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-2 form-inline ">
+                    <div class="form-check">
+                        <input class="form-check-input " type="checkbox" name="checkposition"
+                            <%= query.checkposition ? ' checked': '' %>>
+                        <label class="form-check-label" for="gridCheck">
+                            Position
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group col-md-10">
+                    <select name="position" id="position" class="form-control form-control-sm">
+                        <option disabled selected>Choose The Position</option>
+                        <option value="Manager" <%= query.position == 'Manager' ? 'selected': '' %>>Manager
+                            </>
+                        <option value="Software Developer"
+                            <%= query.position == 'Software Developer' ? 'selected': '' %>>Software
+                            Developer</option>
+                        <option value="Qulity Assurance" <%= query.position == 'Quality Assurance' ? 'selected': '' %>>
+                            Quality Assurance</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-2 form-inline ">
+                    <div class="form-check">
+                        <input class="form-check-input " type="checkbox" name="checkjobtype"
+                            <%= query.checkjobtype ? ' checked': '' %>>
+                        <label class="form-check-label" for="gridCheck">
+                            Job Type
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group col-md-10">
+                    <select name="jobtype" class="form-control form-control-sm">
+                        <option disabled selected>Choose The Member</option>
+                        <option value="Full Time" <%= query.jobtype == 'Full Time' ? ' selected': '' %>>Full Time
+                        </option>
+                        <option value="Part Time" <%= query.jobtype == 'Part Time' ? ' selected': '' %>>Part Time
+                        </option>
+                    </select>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Search</button>
+            <a href="/users" class="btn btn-warning">Reset</a>
+        </form>
+    </div>
+    <br>
+    <div>
+        <h2>Options</h2>
+    </div>
+    <form action="/users/option" method="POST">
+        <div class="form-group row">
+            <div class="col-sm-2">Checkbox</div>
+            <div class="col-sm-10">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" name="idChecked" value="true"
+                        <%= option.idChecked ? 'checked': ''%>>
+                    <label class="form-check-label" for="idChecked">
+                        ID
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" name="firstnameChecked" value="true"
+                        <%= option.firstnameChecked ? 'checked': ''%>>
+                    <label class="form-check-label" for="firstnameChecked">
+                        First Name
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" name="lastnameChecked" value="true"
+                        <%= option.lastnameChecked ? 'checked': ''%>>
+                    <label class="form-check-label" for="lastnameChecked">
+                        Last Name
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" name="emailChecked" value="true"
+                        <%= option.emailChecked ? 'checked': ''%>>
+                    <label class="form-check-label" for="emailChecked">
+                        Email
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" name="jobtypeChecked" value="true"
+                        <%= option.jobtypeChecked ? 'checked': ''%>>
+                    <label class="form-check-label" for="jobtypeChecked">
+                        Job Type
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" name="positionChecked" value="true"
+                        <%= option.positionChecked ? 'checked': ''%>>
+                    <label class="form-check-label" for=positionChecked">
+                        Position
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div>
+            <button type="submit" class="btn btn-primary">Apply</button>
+        </div>
+    </form>
+    <br>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <%- option.idChecked ? `<th>ID</th>` : `` %>
+                <%- option.firstnameChecked ? `<th>First Name</th>` : `` %>
+                <%- option.lastnameChecked ? `<th>Last Name</th>` : `` %>
+                <%- option.emailChecked ? `<th>Email</th>` : `` %>
+                <%- option.positionChecked ? `<th>Position</th>` : `` %>
+                <%- option.jobtypeChecked ? `<th>Type Job</th>` : `` %>
+                <th scope="col">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            <% for(const item of data)  { %>
+            <tr>
+                <%- option.idChecked ? `<td>${item.userid}</td>` : `` %>
+                <%- option. firstnameChecked ? `<td>${item.firstname}</td>` : `` %>
+                <%- option.lastnameChecked ? `<td>${item.lastname}</td>` : `` %>
+                <%- option.emailChecked ? `<td>${item.email}</td>` : `` %>
+                <%- option.positionChecked ? `<td>${item.position}</td>` : `` %>
+                <%- option.jobtypeChecked ? `<td>${item.isfulltime}</td>` : `` %>
+                <td>
+                    <a class="btn btn-success edit" href="/users/edit/<%= item.userid %>">Edit</a>
+                    <a class="btn btn-danger delete"
+                        onclick="return confirm('Are you sure you want to delete this item?');"
+                        href="/users/delete/<%= item.userid %>">Delete</a>
+                </td>
+
+
+            </tr>
+            <% } %>
+
+        </tbody>
+    </table>
+    <nav aria-label="Page navigation example" style="margin-top:1%">
+        <ul class="pagination" class="pagination justify-content-center">
+            <li class="page-item <%= page == 1 ? 'disabled' : ''%>"><a class="page-link"
+                    href="/users<%= url.replace(`page=${parseInt(page)}`, `page=${parseInt(page) - 1}`) %>">Previous</a>
+            </li>
+            <% for(let i = 1; i <= pages; i++){ %>
+            <li class="page-item <%= page == i ? 'active' : '' %>"><a class="page-link"
+                    href="/users<%= url.replace(`page=${page}`, `page=${i}`) %>"><%= i %></a></li>
+            <% } %>
+            <li class="page-item <%= page == pages ? 'disabled' : ''%>"><a class="page-link"
+                    href="/users<%= url.replace(`page=${parseInt(page)}`, `page=${parseInt(page) + 1}`) %>">Next</a>
+            </li>
+        </ul>
+    </nav>
+    <a href="/users/add" class="btn btn-primary">Add</a>
+</div>
+
+<% include ../partial/footer%>

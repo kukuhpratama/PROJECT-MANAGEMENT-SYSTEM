@@ -1,0 +1,98 @@
+<% include ../partial/header%>
+<% include ../partial/navbar%>
+<div class="container-fluid">
+    <div>
+        <h1>Profile</h1>
+    </div>
+    <hr>
+</div>
+<div class="container">
+    <h3 class="">Selamat Datang , <%= profile.firstname %></h3>
+    <br>
+    <form action="" method="POST">
+        <div class="form-group row">
+            <label for="firstname" class="col-sm-2 col-form-label">First Name</label>
+            <div class="col-sm-8">
+                <input type="text" class="form-control" id="firstname" placeholder="First Name" name="firstname"
+                    value="<%= profile.firstname %>">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="lastname" class="col-sm-2 col-form-label">Last Name</label>
+            <div class="col-sm-8">
+                <input type="text" class="form-control" id="lastname" placeholder="Last Name" name="lastname"
+                    value="<%= profile.lastname %>">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="email" class="col-sm-2 col-form-label">Email Address</label>
+            <div class="col-sm-8">
+                <input type="text" class="form-control" id="email" placeholder="Email Address" name="email"
+                    value="<%= profile.email %>" disabled>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="password" class="col-sm-2 col-form-label">Password</label>
+            <div class="col-sm-8">
+                <input type="password" class="form-control" id="password" placeholder="Password"
+                    value="<%= profile.password %>" name="password" required>
+            </div>
+        </div>
+
+        <fieldset class="form-group">
+            <div class="row">
+                <legend class="col-form-label col-sm-2 pt-0">Position</legend>
+                <div class="col-sm-10">
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="position" id="positionManager"
+                            value="Manager" <%= profile.position == 'Manager' ? 'checked' : '' %>>
+                        <label class="form-check-label" for="positionManager">
+                            Manager
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="position" id="positionSoftwareDeveloper"
+                            value="Software Developer" <%= profile.position == 'Software Developer' ? 'checked' : '' %>>
+                        <label class="form-check-label" for="positionManager">
+                            Software Developer
+                        </label>
+                    </div>
+
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="position" id="positionQualityAssurance"
+                            value="Quality Assurance" <%= profile.position == 'Quality Assurance' ? 'checked' : '' %>>
+                        <label class="form-check-label" for="positionManager">
+                            Quality Assurance
+                        </label>
+                    </div>
+
+                </div>
+            </div>
+        </fieldset>
+
+        <fieldset class="form-group">
+            <div class="row">
+                <legend class="col-form-label col-sm-2 pt-0">Type Job</legend>
+                <div class="col-sm-10">
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="jobtype" id="jobtypefulltime"
+                            value="Full Time" <%= profile.isfulltime == 'Full Time' ? 'checked' : '' %>>
+                        <label class="form-check-label" for="jobtypefulltime">
+                            Full Time
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="jobtype" id="jobtypeparttime"
+                            value="Part Time" <%= profile.isfulltime == 'Part Time' ? 'checked' : '' %>>
+                        <label class="form-check-label" for="jobtypeparttime">
+                            Part Time
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+        <button type="submit" name="button" class="btn btn-primary">Update</button>
+        <a href="/projects" class="btn btn-warning">Cancel</a>
+    </form>
+</div>
+<% include ../partial/footer%>

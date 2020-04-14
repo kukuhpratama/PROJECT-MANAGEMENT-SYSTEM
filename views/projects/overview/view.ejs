@@ -1,0 +1,59 @@
+<% include ../../partial/header%>
+
+<% include ../../partial/navbar%>
+
+<div class="wrapper d-flex align-items-stretch">
+    <% include ../../partial/sidebar%>
+
+    <!-- Page Content  -->
+    <div id="content" class="p-4 pt-1">
+        <h1>Overview</h1>
+        <hr>
+        <h3>Library System</h3>
+        <div class="card">
+            <div class="card-body">
+                <h6>issue tracking</h6>
+                <ul>
+                    <li>
+                        Bug :
+                        <span class="badge badge-warning ">
+                            <%= bugOpen %> Open / <%= bugTotal %>
+                        </span>
+                    </li>
+
+                    <li>
+                        Feature :
+                        <span class="badge badge-dark">
+                            <%= featureOpen %> Open / <%= featureTotal %>
+                        </span>
+                    </li>
+
+                    <li>
+                        Support :
+                        <span class="badge badge-success">
+                            <%= supportOpen %> Open / <%= supportTotal %>
+
+                        </span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <br>
+        <div class="card">
+            <div class="card-body">
+                <h6>Members</h6>
+                <ul>
+                    <% data.forEach((item, index) =>{ %>
+                    <li>
+                        <%= `${item.firstname} ${item.lastname}` %>
+                    </li>
+
+                    <% }) %>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<% include ../../partial/footer%>

@@ -1,0 +1,103 @@
+body{
+    background-image: url(../images/login-bg.jpg) !important;
+    background-size: 100%;
+    height: 100%;
+    overflow: hidden;
+    @media screen and (max-width: 991px){
+        overflow: auto;
+    }
+}
+
+.login-container{
+    margin: auto;
+    box-shadow: 1.5px 3.99px 27px 0px rgba( 0, 0, 0, 0.1);
+    transition: 0.3s;
+    background-color: rgba(255,255,255,0.72);
+    margin: auto;
+    margin-top: 7%;
+    @media screen and (max-width: 991px){
+        margin-bottom: 5%;
+    }
+}
+.img-box{
+    margin: auto;
+    padding: 60px 40px;
+   border-right: 1px solid #cccccc5e;
+   text-align: center;
+}
+.login-box{
+    padding: 60px 50px;
+     border-left: 1px solid #cccccc5e;
+    margin: auto;
+    h5{
+        margin-bottom: 50px;
+    }
+    .login-row{
+        margin-top: 25px;
+        input{
+            margin-bottom: 0px;
+        }
+        
+    }
+    .forrr{
+        p{
+            font-size: .9rem;
+        }
+        a{
+             font-size: .9rem;
+            float: right;
+            margin-top: -22px;
+            color: #5288f4;
+        }
+    }
+    .donroo{
+         p{
+            font-size: .9rem;
+        }
+        a{
+            ont-size: .9rem;
+             color: #5288f4;
+            padding-left: 3px;
+            text-decoration: underline;
+        }
+    }
+    .btnroo{
+        .btn{
+            margin-right: 15px;
+            border-radius: 50px;
+           width: 120px;
+        }
+    }
+    label{
+         font-size: .93rem;
+         margin-bottom: 0px;
+        color: #928f8f;
+        i{
+            margin-right: 3px;
+        }
+    }
+    input{
+        border: 0px;
+        border-radius: 0px;
+        border-bottom: 1px solid #CCC;
+        background-color: #fcfbfc1f;
+        margin-top: -23px;
+        &:focus{
+            border: 0px !important;
+            border-bottom: 2px solid #5288f4 !important;
+            background-color: #fcfbfc1f !important;
+            margin-top: 0px;
+            transition: 0.1s ease;
+        }
+        
+    }
+}
+
+.copyc{
+    position: absolute;
+    right: 15px;
+    bottom: 15px;
+    p{
+        font-size: .95rem;
+    }
+}
